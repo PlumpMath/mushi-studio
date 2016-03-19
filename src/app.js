@@ -5,7 +5,7 @@ global.app = function () {
     let canvas = document.getElementById('canvas'),
         ctx = canvas.getContext('2d'),
         renderer = new Renderer(ctx),
-        point = new Point(50, 50);
+        point = new Point(50, 50, 30);
     renderer.add(point);
 
     renderer.start();

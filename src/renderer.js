@@ -25,7 +25,7 @@ class Renderer {
         let ctx = this.ctx;
 
         ctx.fillStyle = "green";
-        ctx.fillRect(point.x, point.y, 10, 10);
+        ctx.fillRect(point.anchorX, point.anchorY, point.radius, point.radius);
     }
 
     start() {
