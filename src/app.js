@@ -3,8 +3,7 @@ import {Point} from './point';
 
 global.app = function () {
     let canvas = document.getElementById('canvas'),
-        ctx = canvas.getContext('2d'),
-        renderer = new Renderer(ctx),
+        renderer = new Renderer(canvas),
         point = new Point(50, 50, 30);
     renderer.add(point);
 

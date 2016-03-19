@@ -1,7 +1,10 @@
 class Renderer {
-    constructor(ctx) {
-        this.ctx = ctx;
+    constructor(canvas) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext('2d'),
         this.points = [];
+        this.width = this.canvas.width;
+        this.height = this.canvas.height;
     }
 
     add(point) {
@@ -13,6 +16,9 @@ class Renderer {
             currentTime = (new Date()).getTime(),
             deltaTime = currentTime - this.previousTime;
         this.previousTime = currentTime;
+
+        this.ctx.fillStyle = 'black';
+        this.ctx.fillRect(0, 0, this.width, this.height);
 
         this.points.forEach((point) => {
             this.renderPoint(point, deltaTime);
