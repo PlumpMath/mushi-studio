@@ -3,9 +3,19 @@ import {Point} from './point';
 
 global.app = function () {
     let canvas = document.getElementById('canvas'),
+        width = canvas.width,
+        height = canvas.height,
         renderer = new Renderer(canvas),
-        point = new Point(50, 50, 30);
-    renderer.add(point);
+        pointsCount = 100,
+        radius = 10;
+
+    for (let i = 0; i < pointsCount; i++) {
+        let x = Math.random() * (width - radius) + radius,
+            y = Math.random() * (height - radius) + radius,
+            point = new Point(x, y, radius);
+
+        renderer.add(point);
+    }
 
     renderer.start();
 };
