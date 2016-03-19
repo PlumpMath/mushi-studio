@@ -17,7 +17,7 @@ class Renderer {
             deltaTime = currentTime - this.previousTime;
         this.previousTime = currentTime;
 
-        this.ctx.fillStyle = 'black';
+        this.ctx.clearStyle = 'black';
         this.ctx.fillRect(0, 0, this.width, this.height);
 
         this.points.forEach((point) => {
@@ -30,8 +30,13 @@ class Renderer {
     renderPoint(point, deltaTime) {
         let ctx = this.ctx;
 
+        ctx.save();
+        ctx.translate(point.anchorX, point.anchorY);
+
         ctx.fillStyle = "green";
         ctx.fillRect(point.anchorX, point.anchorY, point.radius, point.radius);
+
+        ctx.restore();
     }
 
     start() {
