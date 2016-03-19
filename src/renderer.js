@@ -1,6 +1,6 @@
 class Renderer {
-    constructor(canvas) {
-        this.canvas = canvas;
+    constructor(ctx) {
+        this.ctx = ctx;
         this.points = [];
     }
 
@@ -9,19 +9,23 @@ class Renderer {
     }
 
     renderStep() {
-        this.currentTime = (new Date()).getTime();
-
         let render = this.renderStep.bind(this),
-            deltaTime = this.currentTime - this.previousTime;
-
-        this.previousTime = this.currentTime;
+            currentTime = (new Date()).getTime(),
+            deltaTime = currentTime - this.previousTime;
+        this.previousTime = currentTime;
 
         this.points.forEach((point) => {
-            // console.log("this.previousTime = ", this.previousTime);
-            // console.log(point);
+            this.renderPoint(point, deltaTime);
         });
 
         window.requestAnimationFrame(render)
+    }
+
+    renderPoint(point, deltaTime) {
+        let ctx = this.ctx;
+
+        ctx.fillStyle = "green";
+        ctx.fillRect(point.x, point.y, 10, 10);
     }
 
     start() {
