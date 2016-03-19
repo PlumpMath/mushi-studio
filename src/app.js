@@ -1,6 +1,11 @@
-import {Person} from './model/Person';
+import {Renderer} from './renderer';
+import {Point} from './point';
 
 global.app = function () {
-    var christoph = new Person('Christoph', 'Burgdorf');
-    console.log(christoph.fullName);
+    let canvas = document.getElementById('canvas');
+    let renderer = new Renderer(canvas);
+    let point = new Point(50, 50);
+    renderer.add(point);
+
+    renderer.start();
 };
